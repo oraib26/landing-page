@@ -1,78 +1,11 @@
-/**
- * 
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- * 
- * Dependencies: None
- * 
- * JS Version: ES2015/ES6
- * 
- * JS Standard: ESlint
- * 
-*/
-
-/**
- * Comments should be present at the beginning of each procedure and class.
- * Great to have comments before crucial code sections within the procedure.
-*/
-
-/**
- * Define Global Variables
- * 
-*/
-
-
-/**
- * End Global Variables
- * Start Helper Functions
- * 
-*/
-
-
-
-/**
- * End Helper Functions
- * Begin Main Functions
- * 
-*/
-
-// build the nav
-
-
-// Add class 'active' to section when near top of viewport
-
-
-// Scroll to anchor ID using scrollTO event
-
-
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
-
-
-/////////// The soluation :
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('section');
     const navList = document.getElementById('navbar__list');
-    const navbarLinks = document.querySelectorAll('.menu__link');
-
 
     navList.innerHTML = '';
 
     // Loop through each section to create a new nav item
-    sections.forEach(section => {
+    sections.forEach((section, index) => {
         const navItemText = section.getAttribute('data-nav');
         const navItemId = section.id;
 
@@ -93,11 +26,19 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', (event) => {
             event.preventDefault();
             document.getElementById(navItemId).scrollIntoView({ behavior: 'smooth' });
+
+            // Remove 'active' class from all navbar links
+            const navbarLinks = document.querySelectorAll('.menu__link');
+            navbarLinks.forEach(navLink => navLink.classList.remove('active'));
+
+            // Add 'active' class to the clicked link
+            link.classList.add('active');
         });
     });
 
     function makeActive() {
         let found = false; // This flag will indicate if we've found the active section yet
+        const navbarLinks = document.querySelectorAll('.menu__link');
 
         // We use reverse loop to prioritize the first section in view from top to bottom
         for (let i = sections.length - 1; i >= 0; i--) {
@@ -106,18 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
             // Check if section is in the viewport
             if (rect.top <= 150 && rect.bottom >= 150 && !found) {
                 // Add 'active' class to the section and corresponding nav link
-                section.classList.add('your-active-class');
+                section.classList.add('active');
                 navbarLinks[i].classList.add('active');
                 found = true; // Set found flag
             } else {
                 // Remove 'active' class from the section and corresponding nav link
-                section.classList.remove('your-active-class');
+                section.classList.remove('active');
                 navbarLinks[i].classList.remove('active');
             }
         }
     }
     window.addEventListener('scroll', makeActive);
 });
-
-
-

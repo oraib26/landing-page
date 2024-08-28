@@ -84,11 +84,7 @@ section {
     color: #000;
 }
 
-.navbar__menu .menu__link:hover {
-    background: #333;
-    color: #fff;
-    transition: ease 0.3s all;
-}
+
 
 /* Header Styles */
 .page__header {
@@ -226,4 +222,8 @@ section.your-active-class .landing__container::after {
 		           translate(-1em) 
 		           rotate(-360deg);
 	}
+}
+
+@media only screen and (max-width: 493px){
+    
 }

@@ -225,5 +225,55 @@ section.your-active-class .landing__container::after {
 }
 
 @media only screen and (max-width: 493px){
-    
+    /* Adjust the font size for better readability on small screens */
+    h1 {
+        font-size: 2em;
+        margin: 1.5em 0.5em;
+    }
+
+    h2 {
+        font-size: 2em;
+        margin-bottom: 1em;
+    }
+
+    p {
+        font-size: 0.9em;
+        line-height: 1.4em;
+    }
+
+    /* Adjust the padding and margins for sections */
+    .landing__container {
+        padding: 1em;
+    }
+
+    /* Ensure navigation items are stacked vertically */
+    .navbar__menu ul {
+        text-align: left;
+        padding-left: 0;
+    }
+
+    .navbar__menu li {
+        display: block;
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    /* Adjust the layout for sections */
+    section {
+        min-height: auto;
+        padding: 1em 0;
+    }
+
+    /* Ensure footer has proper padding and visibility */
+    .page__footer {
+        padding: 2em;
+    }
+
+    /* Handle background circles or other decorative elements */
+    section:nth-of-type(odd) .landing__container::before,
+    section:nth-of-type(even) .landing__container::before,
+    section:nth-of-type(3n) .landing__container::after,
+    section:nth-of-type(3n + 1) .landing__container::after {
+        display: none;
+    }
 }
